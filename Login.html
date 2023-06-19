@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sing In</title>
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.8/css/line.css">
+</head>
+<body>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Play&display=swap');
+        
+        body{
+            background-image: url("download.jpg");
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+            overflow: hidden;
+            font-family: 'Play', sans-serif;
+        }
+        .container-form{
+            width: 100%;
+           ;
+        }
+
+        .container-form .form{
+            width: 40%;
+             margin: 100px auto;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        .form  {
+            padding: 40px 40px;
+background-color: #06949b73;
+backdrop-filter: blur(4px);
+border-radius: 12px;
+font-family: 'Play', sans-serif;
+font-size: 12px;
+letter-spacing: 0.4px;
+        }
+
+        .form h1{
+    font-size: 20px;
+    
+    text-align: center;
+    color: white;
+    letter-spacing: 3px;
+}
+
+.form input{
+    width: 250px;
+    border: none;
+    outline: none;
+    padding: 5px 1px;
+    border-radius: 3px;
+
+}
+.form-control label{
+    font-size: 14px;
+    line-height: 30px;
+}
+
+.form input{
+    width: 250px;
+    border: none;
+    outline: none;
+    padding: 5px 1px;
+    border-radius: 3px;
+
+}
+
+.form button{
+    width: 190px;
+    display: flex;
+justify-content: center;
+padding: 4px 10px;
+    margin: auto;
+    border: none;
+    border-radius: 5px;
+    background-color: #dfc012;
+    color: black;
+    font-size: 14px;
+    letter-spacing: 1px;
+cursor: pointer;
+}
+
+.form-control{
+    position: relative;
+}
+
+.form-control >*{
+    padding-bottom: 20px;
+}
+
+.form-control .uil-check{
+    position: absolute;
+    right: 6px;
+    top: 33px;
+    color: #38b000;
+    visibility: hidden;
+}
+.form-control .uil-times{
+    position: absolute;
+    right: 6px;
+    top: 33px;
+    color: #d00000;
+    visibility: hidden;
+}
+
+.form-control small{
+    color: #d00000;
+display: block;
+visibility: hidden;
+}
+
+.form-control.success input{
+    border: 1px solid #38b000;
+}
+
+.form-control.error input{
+    border: 1px solid  #d00000;
+}
+
+.form-control i {
+    font-size: 18px;
+}
+
+.form-control.error small{
+    visibility: visible;
+}
+
+::placeholder{
+    font-size: 11px;
+}
+       
+
+    </style>
+
+
+
+    
+<div class="container-form">
+        
+    <div class="form">
+        <h1>Login</h1>
+        <form action="" id="form">
+        <div class="form-control">
+        <label for="">Email</label> <br>
+        <input type="email" id="email" placeholder="Enter Your Email"> <br>
+        <i id="check" class="uil uil-check"></i>
+        <i id="error" class="uil uil-times"></i>
+        <small>Error Massage</small>
+        </div>
+
+        <div class="form-control">
+        <label for="">Password</label> <br>
+        <input type="text" id="Password" placeholder="Enter Your Password"> <br>
+        <i id="check" class="uil uil-check"></i>
+        <i id="error" class="uil uil-times"></i>
+        <small>Error Massage</small>
+        </div>
+        <button class="btn">Login</button>
+
+        </form>
+        </div>
+
+
+
+
+
+
+
+
+<script>
+const email = document.querySelector("#email")
+const password = document.querySelector("#Password")
+const button = document.querySelector(".btn")
+
+
+function showError(input , message){
+let parentElement = input.parentElement
+parentElement.classList = 'form-control error'
+const small = parentElement.querySelector("small")
+const errorIcon = parentElement.querySelector("#error")
+const successIcon = parentElement.querySelector("#check")
+errorIcon.style.visibility = 'visible'
+successIcon.style.visibility = 'hidden'
+small.innerText = message 
+}
+
+function showSuccess(input){
+    let parentElement = input.parentElement
+    parentElement.classList = 'form-control success'
+    const errorIcon = parentElement.querySelector("#error")
+    const successIcon = parentElement.querySelector("#check")
+    errorIcon.style.visibility = 'hidden'
+    successIcon.style.visibility = 'visible'
+}
+
+
+
+button.addEventListener('click' , (event)=>{
+    event.preventDefault()
+    checkLogin(email , password)
+    
+})
+
+
+// Get user information
+const getUserInfoFromLocal = function(){
+    let userInformation = localStorage.getItem('users');
+    return userInformation ? JSON.parse(userInformation) : [];
+}
+
+function checkLogin(useremail , userpassword){
+    let email = useremail.value;
+    let password = userpassword.value
+    if(email.length === '' && password.length === '' ){
+        alert('please make check you fill inputs')
+    }
+    let users = getUserInfoFromLocal();
+console.log(users);
+
+    let filtredUser = users.filter((ops) => ops.email == email && ops.password == password) ;
+
+    console.log("filtred User", filtredUser);
+
+
+    if (filtredUser.length > 0) {
+
+
+        if (email == filtredUser[0].email && password == filtredUser[0].password) {
+
+            window.location.href = "home.html";
+
+        } else {
+            console.log("no ")
+
+        }
+
+    } 
+
+
+}
+
+
+
+
+
+
+</script>
+
+</body>
+</html>

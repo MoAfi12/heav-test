@@ -1,0 +1,135 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Play&display=swap');
+
+
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+  background-image: url("download.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.container-form{
+    max-width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 40px;
+    
+}
+
+.form{
+padding: 40px 40px;
+background-color: #06949b73;
+backdrop-filter: blur(4px);
+border-radius: 12px;
+font-family: 'Play', sans-serif;
+font-size: 12px;
+letter-spacing: 0.4px;
+}
+
+.form >*{
+    margin-bottom: 12px;
+    line-height: 25px;
+}
+
+.form h1{
+    font-size: 20px;
+    
+    text-align: center;
+    color: white;
+    letter-spacing: 3px;
+}
+.form-control label{
+    font-size: 14px;
+    
+}
+
+.form input{
+    width: 250px;
+    border: none;
+    outline: none;
+    padding: 5px 1px;
+    border-radius: 3px;
+
+}
+
+.form button{
+    width: 190px;
+    display: flex;
+justify-content: center;
+padding: 4px 10px;
+    margin: auto;
+    border: none;
+    border-radius: 5px;
+    background-color: #dfc012;
+    color: black;
+    font-size: 14px;
+    letter-spacing: 1px;
+cursor: pointer;
+}
+
+.form-control{
+    position: relative;
+}
+
+.form-control .uil-check{
+    position: absolute;
+    right: 6px;
+    top: 25px;
+    color: #38b000;
+    visibility: hidden;
+}
+.form-control .uil-times{
+    position: absolute;
+    right: 6px;
+    top: 25px;
+    color: #d00000;
+    visibility: hidden;
+}
+
+.form-control small{
+    color: #d00000;
+display: block;
+visibility: hidden;
+}
+
+.form-control.success input{
+    border: 1px solid #38b000;
+}
+
+.form-control.error input{
+    border: 1px solid  #d00000;
+}
+
+.form-control i {
+    font-size: 18px;
+}
+
+.form-control.error small{
+    visibility: visible;
+}
+
+.an-account{
+    color: white;
+    text-align: center;
+    font-size: 13px;
+}
+
+.an-account a{
+    color: #f13838;
+    text-decoration: none;
+    margin-left:6px;
+}
+::placeholder{
+    font-size: 11px;
+}
